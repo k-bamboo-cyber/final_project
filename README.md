@@ -3,7 +3,7 @@
 
 Selenium Python
 
-[![Build Status](https://travis-ci.org/berpress/shop_tests.svg?branch=main)](https://travis-ci.org/berpress/shop_tests)
+[![Build Status](https://travis-ci.org/k-bamboo-cyber/final_project.svg?branch=main)](https://travis-ci.org/k-bamboo-cyber/final_project)
 
 
 В рамках этого проекта автоматизированы основные сценарии пользователей [магазина](http://automationpractice.com) : регистрация, авторизация, поиск товаров, оформление заказа и т.д.
