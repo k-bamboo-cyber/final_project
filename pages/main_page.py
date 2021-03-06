@@ -1,5 +1,4 @@
 import logging
-import time
 from selenium.webdriver import ActionChains
 
 from common.base import BaseClass
@@ -39,16 +38,15 @@ class MainPage(BaseClass):
         self.logout_button().click()
 
     def logout_button_text(self):
-        self.logout_button().text()
+        self.logout_button().text
 
     def check_logout(self):
         logger.info("Проверяем, что присутствует кнопка разлогина")
         self.menu_button_click()
         self.logout_button_click()
-        
 
     def try_logout(self):
-        logger.info(f"Пытаемся разлогиниться")
+        logger.info("Пытаемся разлогиниться")
         """
         1. Нажимаем кнопку ню в бургере
         2. В бургере нажимаем Logout
@@ -58,4 +56,5 @@ class MainPage(BaseClass):
         menu = self.menu_button()
         logout = self.logout_button()
         ActionChains(self.app.driver).move_to_element(menu).move_to_element(
-            logout).click().perform()
+            logout
+        ).click().perform()

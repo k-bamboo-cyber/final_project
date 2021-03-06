@@ -1,0 +1,2 @@
+[32mINFO    [0m root:application.py:31 Open main page
+[32mINFO    [0m root:login.py:26 Пытаемся залогиниться с помощью логина: locked_out_user и пароля: secret_sauce
