@@ -14,4 +14,5 @@ class FinishPage(BaseClass):
         return self.app.driver.find_element(*OverviewPageLocators.COMPLETE_IMG)
 
     def complete_img_source(self):
+        logger.info("Получаем финальную картинку")
         return self.complete_img().get_attribute("src")

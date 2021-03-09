@@ -54,11 +54,13 @@ class ItemPage(BaseClass):
         return self.back_btn().click()
 
     def cart_number(self):
+        logger.info("Получаем кол-во товаров в корзине")
         time.sleep(0.3)
         n = self.app.driver.find_elements(*ItemPageLocators.CART_NUMBER)
         return n
 
     def check_cart_number(self):
+        logger.info("Возвращаем кол-во товаров в корзине")
         if len(self.cart_number()) == 0:
             return 0
         else:

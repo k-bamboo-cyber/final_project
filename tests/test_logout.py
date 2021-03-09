@@ -8,7 +8,7 @@ class TestLogout:
     @allure.severity("critical")
     def test_logout(self, app, standard_login):
         """
-        1. Открыть страницу
+        1. Открыть страницу магазина
         2. Авторизоваться
         3. Разлогиниться, открыв бургер
         4. Проверить, что есть список пользователей
