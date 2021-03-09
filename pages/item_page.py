@@ -56,6 +56,7 @@ class ItemPage(BaseClass):
 
     def cart_number(self):
         n = self.app.driver.find_elements(*ItemPageLocators.CART_NUMBER)
+        time.sleep(0.3)
         return n
 
     def check_cart_number(self):

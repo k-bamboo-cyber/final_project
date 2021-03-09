@@ -39,13 +39,14 @@ class TestItemLabels:
         2. Выбрать один из товаров
         3. Отрыть страницу товара
         4. Проверить, что на стр товара есть
-         кнопки для добавления в корзину и возврата на главную стр
+         кнопка для добавления в корзину или удаления из корзины
         """
         n = app.main_page.choose_item()
         app.main_page.open_item_card(n)
         assert (
             app.item_page.add_to_cart_btn_text() == ButtonTexts.ADD_TO_CART_BUTTON
-        ), "Текст кнопки для добавления в корзину некорректен"
+            or app.item_page.add_to_cart_btn_text() == ButtonTexts.REMOVE_BUTTON
+        ), "Текст кнопки некорректен"
         assert (
             app.item_page.back_btn_text() == ButtonTexts.BACK_BUTTON
         ), "Текст кнопки для возврата на главную стр некорректен"
