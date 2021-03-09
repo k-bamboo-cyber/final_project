@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login import LoginPage
 from pages.main_page import MainPage
+from pages.item_page import ItemPage
+from pages.cart_page import CartPage
 from common.logger import setup
 
 logger = logging.getLogger()
@@ -26,6 +28,8 @@ class Application:
         self.driver.implicitly_wait(10)
         self.login = LoginPage(self)
         self.main_page = MainPage(self)
+        self.item_page = ItemPage(self)
+        self.cart_page = CartPage(self)
 
     def open_main_page(self):
         logger.info("Open main page")

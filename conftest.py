@@ -14,12 +14,12 @@ def app(request):
     app.browser_close()
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="function")
 def standard_login(request, app):
     login = request.config.getoption("--username")
     passwd = request.config.getoption("--password")
     app.open_main_page()
-    if app.login.logout_button() == 0:
+    if app.main_page.logout_button() == 0:
         app.login.auth(login, passwd)
 
 
@@ -67,6 +67,6 @@ def pytest_addoption(parser):
     parser.addoption(
         "--headless",
         action="store",
-        default=True,
+        default=False,
         help="launching browser without gui",
     ),

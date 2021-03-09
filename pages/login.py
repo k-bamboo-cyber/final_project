@@ -35,3 +35,9 @@ class LoginPage(BaseClass):
 
     def auth_alert_get_text(self):
         return self.app.driver.find_element(*LoginLocators.ALERT).text
+
+    def users_list(self):
+        return self.app.driver.find_element(*LoginLocators.USERS_LIST)
+
+    def get_users_list(self):
+        return self.users_list().text
