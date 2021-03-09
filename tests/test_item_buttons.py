@@ -18,8 +18,8 @@ class TestItemActions:
         app.main_page.open_item_card(n)
         first = app.item_page.check_cart_number()
         app.item_page.add_to_cart_btn_click()
-        assert (
-            app.item_page.check_cart_number() == first + 1
+        assert app.item_page.check_cart_number() == (
+            first + 1
         ), "Ошибка при добавлении товара в корзину"
         assert (
             app.item_page.remove_btn_text() == ButtonTexts.REMOVE_BUTTON
@@ -38,8 +38,8 @@ class TestItemActions:
         app.item_page.add_to_cart_btn_click()
         first = app.item_page.check_cart_number()
         app.item_page.remove_btn_click()
-        assert (
-            app.item_page.check_cart_number() == first - 1
+        assert app.item_page.check_cart_number() == (
+            first - 1
         ), "Ошибка при удалении товара из корзины"
 
     def test_back_to_main(self, app, standard_login):

@@ -17,6 +17,7 @@ class MainPage(BaseClass):
 
     def menu_button_click(self):
         self.menu_button().click()
+        time.sleep(0.2)
 
     def sort_button(self):
         return self.app.driver.find_element(*MainPageLocators.SORT_DROPDOWN)
@@ -112,7 +113,7 @@ class MainPage(BaseClass):
             element = self.app.driver.find_elements(*MainPageLocators.LOGOUT_BUTTON)
             if len(element) > 0:
                 return element[0]
-            time.sleep(0.5)
+            time.sleep(0.8)
         return 0
 
     def logout_button_click(self):
@@ -121,8 +122,7 @@ class MainPage(BaseClass):
             self.logout_button().click()
 
     def logout_button_text(self):
-        m = self.logout_button().text
-        return m
+        return self.logout_button().text
 
     def try_logout(self):
         logger.info("Пытаемся разлогиниться")
