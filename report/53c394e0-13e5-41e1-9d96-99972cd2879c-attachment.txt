@@ -1,2 +1,0 @@
-2021-03-06 09:44:09,529 - INFO - Open main page
-2021-03-06 09:44:09,577 - INFO - Пытаемся залогиниться с помощью логина: performance_glitch_user и пароля: secret_sauce

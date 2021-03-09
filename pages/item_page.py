@@ -52,9 +52,9 @@ class ItemPage(BaseClass):
 
     def back_btn_click(self):
         return self.back_btn().click()
-        time.sleep(0.2)
 
     def cart_number(self):
+        time.sleep(0.3)
         n = self.app.driver.find_elements(*ItemPageLocators.CART_NUMBER)
         return n
 
@@ -74,4 +74,5 @@ class ItemPage(BaseClass):
         return self.remove_btn().click()
 
     def app_logo(self):
+        time.sleep(0.2)
         return self.app.driver.find_element(*ItemPageLocators.APP_LOGO)

@@ -23,9 +23,16 @@ class Alerts:
     )
     EMPTY_MAIL_ALERT = "Epic sadface: Username is required"
     EMPTY_PASSWORD_ALERT = "Epic sadface: Password is required"
+    EMPTY_FIRSTAME_ALERT = "Error: First Name is required"
+    EMPTY_LASTAME_ALERT = "Error: Last Name is required"
+    EMPTY_ZIPCODE_ALERT = "Error: Postal Code is required"
 
 
 class Links:
     LINKEDIN_LINK = "https://www.linkedin.com/company/sauce-labs/"
     TWITTER_LINK = "https://twitter.com/saucelabs"
     FACEBOOK_LINK = "https://www.facebook.com/saucelabs"
+
+
+class Pictures:
+    COMPLETE_IMG = "https://www.saucedemo.com/static/media/pony-express.46394a5d.png"

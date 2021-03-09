@@ -25,23 +25,6 @@ class TestItemActions:
             app.item_page.remove_btn_text() == ButtonTexts.REMOVE_BUTTON
         ), "Отсутствует кнопка удаления"
 
-    def test_remove_item(self, app, standard_login):
-        """
-        1. Авторизоваться
-        2. Выбрать один из товаров
-        3. Отрыть страницу товара
-        4. Добавить товар в корзину
-        5. Проверить, что при удалении товар исчезает из корзины
-        """
-        n = app.main_page.choose_item()
-        app.main_page.open_item_card(n)
-        app.item_page.add_to_cart_btn_click()
-        first = app.item_page.check_cart_number()
-        app.item_page.remove_btn_click()
-        assert app.item_page.check_cart_number() == (
-            first - 1
-        ), "Ошибка при удалении товара из корзины"
-
     def test_back_to_main(self, app, standard_login):
         """
         1. Авторизоваться
