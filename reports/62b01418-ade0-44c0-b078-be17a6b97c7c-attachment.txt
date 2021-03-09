@@ -1,0 +1,2 @@
+[32mINFO    [0m root:application.py:35 Open main page
+[32mINFO    [0m root:login.py:26 Пытаемся залогиниться с помощью логина: antonina1973@melnikov.biz и пароля: K9V)S@#w@C

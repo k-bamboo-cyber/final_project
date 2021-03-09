@@ -18,14 +18,6 @@ class MainPage(BaseClass):
     def menu_button_click(self):
         self.menu_button().click()
 
-    def logout_button_text(self):
-        self.logout_button().text
-
-    def try_logout(self):
-        logger.info("Пытаемся разлогиниться")
-        self.menu_button_click()
-        self.logout_button_click()
-
     def sort_button(self):
         return self.app.driver.find_element(*MainPageLocators.SORT_DROPDOWN)
 
@@ -120,13 +112,22 @@ class MainPage(BaseClass):
             element = self.app.driver.find_elements(*MainPageLocators.LOGOUT_BUTTON)
             if len(element) > 0:
                 return element[0]
-            time.sleep(0.2)
+            time.sleep(0.5)
         return 0
 
     def logout_button_click(self):
         """Если кнопка выхода найдена, нажимаем её и выходим из аккаунта"""
         if self.logout_button() != 0:
             self.logout_button().click()
+
+    def logout_button_text(self):
+        m = self.logout_button().text
+        return m
+
+    def try_logout(self):
+        logger.info("Пытаемся разлогиниться")
+        self.menu_button_click()
+        self.logout_button_click()
 
     def twitter_button(self):
         return self.app.driver.find_element(

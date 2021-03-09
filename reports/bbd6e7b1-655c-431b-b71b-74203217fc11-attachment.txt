@@ -1,0 +1,3 @@
+[32mINFO    [0m root:application.py:35 Open main page
+[32mINFO    [0m root:login.py:26 Пытаемся залогиниться с помощью логина: performance_glitch_user и пароля: secret_sauce
+[32mINFO    [0m root:main_page.py:117 Пытаемся разлогиниться

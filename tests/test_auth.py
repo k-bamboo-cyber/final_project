@@ -28,6 +28,7 @@ class TestAuth:
         """
         app.open_main_page()
         app.login.auth(email, password)
+        app.main_page.menu_button_click()
         assert (
             app.main_page.logout_button_text() == ButtonTexts.LOGOUT_BUTTON_TEXT
         ), "Кнопка Logout не найдена"
