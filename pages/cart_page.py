@@ -15,3 +15,9 @@ class CartPage(BaseClass):
 
     def remove_button_click(self):
         self.remove_button()[0].click()
+
+    def checkout_button(self):
+        return self.app.driver.find_element(*CartPageLocators.CHECKOUT_BUTTON)
+
+    def checkout_button_click(self):
+        self.checkout_button().click()
