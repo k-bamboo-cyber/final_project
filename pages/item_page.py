@@ -1,3 +1,4 @@
+import time
 import logging
 
 from common.base import BaseClass
@@ -51,6 +52,7 @@ class ItemPage(BaseClass):
 
     def back_btn_click(self):
         return self.back_btn().click()
+        time.sleep(0.2)
 
     def cart_number(self):
         n = self.app.driver.find_elements(*ItemPageLocators.CART_NUMBER)

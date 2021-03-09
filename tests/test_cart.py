@@ -21,6 +21,6 @@ class TestItemActions:
         app.main_page.cart_icon_click()
         first = app.item_page.check_cart_number()
         app.cart_page.remove_button_click()
-        assert (
-            app.item_page.check_cart_number() == first - 1
+        assert app.item_page.check_cart_number() == (
+            first - 1
         ), "Ошибка при удалении товара "
