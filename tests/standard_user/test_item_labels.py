@@ -33,7 +33,7 @@ class TestItemLabels:
             img == app.item_page.item_img_text()
         ), "Картинка товара не совпадает с картинкой на главной странице"
 
-    def test_item_buttons(self, app, standard_login):
+    def test_item_buttons(self, app, standard_login, clear_cart):
         """
         1. Авторизоваться
         2. Выбрать один из товаров

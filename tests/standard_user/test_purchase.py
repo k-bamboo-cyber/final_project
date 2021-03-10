@@ -18,7 +18,9 @@ class TestPurchase:
             (user2.first_name, user2.last_name, user2.zip_code),
         ),
     )
-    def test_fast_purchase(self, app, standard_login, firstname, lastname, zip_code):
+    def test_fast_purchase(
+        self, app, standard_login, clear_cart, firstname, lastname, zip_code
+    ):
         """
         1. Открыть страницу магазина
         2. Авторизоваться
@@ -51,7 +53,7 @@ class TestPurchase:
         ),
     )
     def test_empty_info_fields(
-        self, app, standard_login, firstname, lastname, zip_code, alert
+        self, app, standard_login, clear_cart, firstname, lastname, zip_code, alert
     ):
         """
         1. Открыть страницу магазина

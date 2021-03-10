@@ -1,9 +1,11 @@
 import allure
+import pytest
 
 
 class TestSorting:
     @allure.story("Сортировка товаров")
     @allure.severity("minor")
+    @pytest.mark.smoke
     def test_az_sorting(self, app, standard_login):
         """
         1. Авторизоваться
@@ -44,6 +46,7 @@ class TestSorting:
             app.main_page.check_hl_sorting()
         ), "Ошибка при сортировке цены по убыванию"
 
+    @pytest.mark.smoke
     def test_switch_sort(self, app, standard_login):
         """
         1. Авторизоваться

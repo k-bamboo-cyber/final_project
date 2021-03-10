@@ -6,7 +6,7 @@ from common.constants import ButtonTexts
 class TestItemActions:
     @allure.story("Добавление товара в корзину")
     @allure.severity("blocker")
-    def test_item_add_to_cart(self, app, standard_login):
+    def test_item_add_to_cart(self, app, standard_login, clear_cart):
         """
         1. Авторизоваться
         2. Выбрать один из товаров
@@ -25,7 +25,7 @@ class TestItemActions:
             app.item_page.remove_btn_text() == ButtonTexts.REMOVE_BUTTON
         ), "Отсутствует кнопка удаления"
 
-    def test_back_to_main(self, app, standard_login):
+    def test_back_to_main(self, app, standard_login, clear_cart):
         """
         1. Авторизоваться
         2. Выбрать один из товаров
