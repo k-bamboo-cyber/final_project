@@ -1,42 +1,33 @@
 
-# Автотесты для интернет магазина одежды
+# Swag Labs (Python+Selenium)
 
-Selenium Python
 
 [![Build Status](https://travis-ci.org/k-bamboo-cyber/final_project.svg?branch=master)](https://travis-ci.org/k-bamboo-cyber/final_project)
 
 
-В рамках этого проекта автоматизированы основные сценарии пользователей [магазина](http://automationpractice.com) : регистрация, авторизация, поиск товаров, оформление заказа и т.д.
+Проект предназначен для демонстрации навыков автоматизации тестирования на примере [интернет-магазина](https://www.saucedemo.com/) Swag Labs
 
-# Запуск
-Тесты можно запускать с опциональными параметрами:
+#Используемые фреймворки
 
-    pytest --headless==false --username=ansh120022 --password=1234
-
+- Pytest (среда тестирования)
+- Selenium WebDriver (инструмент для автоматизации)
+- Allure (отчёты)
+- Travis CI (проверка кода)
 
 # Контроль качества кода
 
 Реализован с помощью pre-commit hook, который проверяет и форматирует код перед коммитом.
 
-## Установка
+### Установка
 
     pip install pre-commit
     pre-commit install
 
-## Использование
+### Использование
 
 Хук запускается автоматически перед коммитом. Принудительный запуск:
 
     pre-commit run --all-files
-
-## Запуск конкретной проверки
-
-  `pre-commit run <hook_id> <options>`
-
-`hook-id`  - идентификатор хука;
-`-a, --all-files`   - запуск всех все файлов в репозитории;
-`--files [FILES[FILES...]]`   - запуск для конкретных файлов.
-
 
 # Отчёты
 
@@ -72,17 +63,28 @@ C помощью scoop установить Allure:
 
     allure serve <dir_name>
 
-## Отчёты в pytest-html
 
-### Установка
+#Для настройки окружения
 
- `pip install pytest-html`
+ + Установить Python 3.8
 
->доступно с Python >=3.6 или PyPy3
 
-### Запуск и просмотр:
+ + Создать виртуальное окружение с помощью команды (подробнее https://docs.python.org/3/library/venv.html):
 
-`pytest --html=report.html --self-contained-html
-`
 
- [Подробнее](https://pytest-html.readthedocs.io/en/latest/user_guide.html#creating-a-self-contained-report) о редактировании внешнего вида отчёта
+    python3 -m venv /path/to/new/virtual/environment
+
+ + Выполнить в командной строке:
+
+
+    pip install -r requirements.txt
+
+# Запуск тестов
+Тесты можно запускать с опциональными параметрами:
+
+    pytest --headless==false --username=ansh120022 --password=1234
+
+Для быстрого прогона часть тестов помечена меткой smoke, для запуска из директории tests:
+
+
+    pytest -m smoke standard_user
