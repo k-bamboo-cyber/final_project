@@ -23,6 +23,31 @@ def standard_login(request, app):
         app.login.auth(login, passwd)
 
 
+@pytest.fixture(scope="function")
+def problem_login(request, app):
+    login = request.config.getoption("--problem_user")
+    passwd = request.config.getoption("--password")
+    app.open_main_page()
+    if app.main_page.logout_button() == 0:
+        app.login.auth(login, passwd)
+
+
+@pytest.fixture(scope="function")
+def glitch_login(request, app):
+    login = request.config.getoption("--glitch_user")
+    passwd = request.config.getoption("--password")
+    app.open_main_page()
+    if app.main_page.logout_button() == 0:
+        app.login.auth(login, passwd)
+
+
+@pytest.fixture(scope="function")
+def clear_cart(app):
+    app.main_page.cart_icon_click()
+    app.cart_page.remove_all()
+    app.cart_page.shopping_button_click()
+
+
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
     outcome = yield
@@ -56,6 +81,18 @@ def pytest_addoption(parser):
         "--username",
         action="store",
         default="standard_user",
+        help="enter username",
+    ),
+    parser.addoption(
+        "--problem_user",
+        action="store",
+        default="problem_user",
+        help="enter username",
+    ),
+    parser.addoption(
+        "--glitch_user",
+        action="store",
+        default="performance_glitch_user",
         help="enter username",
     ),
     parser.addoption(

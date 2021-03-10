@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from common.constants import ButtonTexts
 
@@ -6,9 +7,10 @@ from common.constants import ButtonTexts
 class TestLogout:
     @allure.story("Разлогин")
     @allure.severity("critical")
-    def test_logout(self, app, standard_login):
+    @pytest.mark.xfail(reason="problem user")
+    def test_logout(self, app, problem_login, clear_cart):
         """
-        1. Открыть страницу
+        1. Открыть страницу магазина
         2. Авторизоваться
         3. Разлогиниться, открыв бургер
         4. Проверить, что есть список пользователей

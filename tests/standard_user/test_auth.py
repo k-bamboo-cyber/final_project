@@ -11,6 +11,7 @@ class TestAuth:
 
     @allure.story("Авторизация")
     @allure.severity("blocker")
+    @pytest.mark.smoke
     @pytest.mark.parametrize(
         "email, password",
         (
@@ -33,6 +34,7 @@ class TestAuth:
             app.main_page.logout_button_text() == ButtonTexts.LOGOUT_BUTTON_TEXT
         ), "Кнопка Logout не найдена"
 
+    @pytest.mark.smoke
     @pytest.mark.parametrize(
         "email, password, alert",
         (
@@ -42,6 +44,7 @@ class TestAuth:
             (user.login, Users.EMPTY_PASSWORD, Alerts.EMPTY_PASSWORD_ALERT),
         ),
     )
+    @pytest.mark.smoke
     def test_invalid_auth(self, app, email, password, alert):
         """
         1. Открыть страницу

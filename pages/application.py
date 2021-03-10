@@ -38,8 +38,9 @@ class Application:
         self.finish_page = FinishPage(self)
 
     def open_main_page(self):
-        logger.info("Open main page")
+        logger.info("Открываем главную страницу")
         self.driver.get(self.url)
 
     def browser_close(self):
+        logger.info("Закрываем браузер")
         self.driver.quit()

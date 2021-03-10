@@ -11,6 +11,7 @@ class TestPurchase:
 
     @allure.story("Совершение покупки")
     @allure.severity("critical")
+    @pytest.mark.xfail(reason="problem user")
     @pytest.mark.parametrize(
         "firstname,lastname,zip_code",
         (
@@ -18,7 +19,18 @@ class TestPurchase:
             (user2.first_name, user2.last_name, user2.zip_code),
         ),
     )
-    def test_fast_purchase(self, app, standard_login, firstname, lastname, zip_code):
+    def test_fast_purchase(self, app, problem_login, firstname, lastname, zip_code):
+        """
+        1. Открыть страницу магазина
+        2. Авторизоваться
+        3. Выбрать товар на главной стр
+        4. Добавиь товар в корзину
+        5. Открыть корзину с товаром
+        6. Перейти к странице с персональной инфор-ей
+        7. Перейти на страницу с резюме
+        8. Подтвердить заказ
+        9. Проверить, что отображется финальная картинка
+        """
         n = app.main_page.choose_item()
         app.main_page.open_item_card(n)
         app.item_page.add_to_cart_btn_click()
@@ -31,6 +43,7 @@ class TestPurchase:
             app.finish_page.complete_img_source() == Pictures.COMPLETE_IMG
         ), "Ошибка при оформлении покупки"
 
+    @pytest.mark.xfail(reason="problem user")
     @pytest.mark.parametrize(
         "firstname, lastname, zip_code, alert",
         (
@@ -40,8 +53,18 @@ class TestPurchase:
         ),
     )
     def test_empty_info_fields(
-        self, app, standard_login, firstname, lastname, zip_code, alert
+        self, app, problem_login, clear_cart, firstname, lastname, zip_code, alert
     ):
+        """
+        1. Открыть страницу магазина
+        2. Авторизоваться
+        3. Выбрать товар на главной стр
+        4. Добавиь товар в корзину
+        5. Открыть корзину с товаром
+        6. Перейти к странице с персональной инфор-ей
+        7. Оставить одно из полей пустым
+        8. Проверить наличие и содержимое алерта
+        """
         n = app.main_page.choose_item()
         app.main_page.open_item_card(n)
         app.item_page.add_to_cart_btn_click()

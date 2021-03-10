@@ -1,4 +1,5 @@
 import allure
+import pytest
 
 from common.constants import ButtonTexts
 
@@ -6,7 +7,8 @@ from common.constants import ButtonTexts
 class TestItemLabels:
     @allure.story("Просмотр страницы товара")
     @allure.severity("critical")
-    def test_item_parts(self, app, standard_login):
+    @pytest.mark.xfail(reason="glitch user")
+    def test_item_parts(self, app, glitch_login, clear_cart):
         """
         1. Авторизоваться
         2. Выбрать один из товаров
@@ -33,7 +35,8 @@ class TestItemLabels:
             img == app.item_page.item_img_text()
         ), "Картинка товара не совпадает с картинкой на главной странице"
 
-    def test_item_buttons(self, app, standard_login):
+    @pytest.mark.xfail(reason="glitch user")
+    def test_item_buttons(self, app, glitch_login, clear_cart):
         """
         1. Авторизоваться
         2. Выбрать один из товаров

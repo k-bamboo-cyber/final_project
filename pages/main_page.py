@@ -29,41 +29,48 @@ class MainPage(BaseClass):
         return self.app.driver.find_element(*MainPageLocators.AZ_SORT_BUTTON)
 
     def az_sort_button_click(self):
+        logger.info("Выбор сортировки по алфавиту (по возрастанию)")
         self.az_sort_button().click()
 
     def za_sort_button(self):
         return self.app.driver.find_element(*MainPageLocators.ZA_SORT_BUTTON)
 
     def za_sort_button_click(self):
+        logger.info("Выбор сортировки по алфавиту (по убыванию)")
         self.za_sort_button().click()
 
     def lh_sort_button(self):
         return self.app.driver.find_element(*MainPageLocators.L_TO_H_BUTTON)
 
     def lh_sort_button_click(self):
+        logger.info("Выбор сортировки по цене (по возрастанию)")
         self.lh_sort_button().click()
 
     def hl_sort_button(self):
         return self.app.driver.find_element(*MainPageLocators.H_TO_L_BUTTON)
 
     def hl_sort_button_click(self):
+        logger.info("Выбор сортировки по цене (по убыванию)")
         self.hl_sort_button().click()
 
     def parsing_items(self) -> dict:
         """Парсинг неймов и цен товаров."""
+        logger.info("Получаем цены всех товаров на странице")
         prices = self.app.driver.find_elements(*MainPageLocators.ITEM_PRICE)
         prices_new = []
         for p in prices:
             prices_new.append(p.text)
+        logger.info("Получаем заголовки всех товаров на странице")
         names = self.app.driver.find_elements(*MainPageLocators.ITEM_NAME)
         names_new = []
         for n in names:
             names_new.append(n.text)
+        logger.info("Формируем словарь из заголовков и цен")
         items = dict(zip(names_new, prices_new))
         return items
 
     def check_az_sorting(self):
-        """Проверка результатов сортировки по алфавиту(возр)."""
+        logger.info("Проверяем сортировку по алфавиту (по возр-ю)")
         self.sort_button_click()
         self.az_sort_button_click()
         names = list(self.parsing_items().keys())
@@ -72,7 +79,7 @@ class MainPage(BaseClass):
         return False
 
     def check_za_sorting(self):
-        """Проверка результатов сортировки по алфавиту(убыв)."""
+        logger.info("Проверяем сортировку по алфавиту (по убыванию)")
         self.sort_button_click()
         self.za_sort_button_click()
         names = list(self.parsing_items().keys())
@@ -81,7 +88,7 @@ class MainPage(BaseClass):
         return False
 
     def check_lh_sorting(self):
-        """Проверка результатов сортировки возр-ю цены."""
+        logger.info("Проверяем сортировку по ценам (по возр-ю)")
         self.sort_button_click()
         self.lh_sort_button_click()
         prices = list(self.parsing_items().values())
@@ -94,7 +101,7 @@ class MainPage(BaseClass):
         return False
 
     def check_hl_sorting(self):
-        """Проверка результатов сортировки убыв-ю цены"""
+        logger.info("Проверяем сортировку по ценам (по убыванию)")
         self.sort_button_click()
         self.hl_sort_button_click()
         prices = list(self.parsing_items().values())
@@ -117,7 +124,7 @@ class MainPage(BaseClass):
         return 0
 
     def logout_button_click(self):
-        """Если кнопка выхода найдена, нажимаем её и выходим из аккаунта"""
+        logger.info("Если кнопка разлогина найдена, выходим из профиля")
         if self.logout_button() != 0:
             self.logout_button().click()
 
@@ -154,6 +161,7 @@ class MainPage(BaseClass):
         return self.linkedin_button().get_attribute("href")
 
     def choose_item(self):
+        logger.info("Выбор рандомного товара на главной странице")
         items = self.app.driver.find_elements(*MainPageLocators.ITEM)
         res = random.randint(1, len(items))
         return res
